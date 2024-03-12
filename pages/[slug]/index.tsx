@@ -24,8 +24,8 @@ const Post = ({slug}:any) => {
   return (
     <main
     >
-      {posts?.map(({ name,slug,slug_name }: any) => (
-        <Link href={`/${slug}/${slug_name}`}>
+      {posts?.map(({ name,slug,slug_name },index: any) => (
+        <Link href={`/${slug}/${slug_name}`} key={index}>
         <div>{name} this from slug {slug}</div>
         </Link>
       ))}

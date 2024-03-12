@@ -23,8 +23,8 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
-      {posts?.map(({ name,slug }: any) => (
-        <Link href={slug}>
+      {posts?.map(({ name,slug },index: any) => (
+        <Link href={slug} key={index}>
         <div>{name}</div>
         </Link>
       ))}
