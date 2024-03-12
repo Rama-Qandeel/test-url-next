@@ -25,7 +25,7 @@ export default function Home() {
     >
       {posts?.map(({ name,slug },index: any) => (
         <Link href={slug} key={index}>
-        <div>{name}</div>
+        <div key={index}>{name}</div>
         </Link>
       ))}
     </main>

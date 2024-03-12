@@ -26,7 +26,7 @@ const Post = ({slug}:any) => {
     >
       {posts?.map(({ name,slug,slug_name },index: any) => (
         <Link href={`/${slug}/${slug_name}`} key={index}>
-        <div>{name} this from slug {slug}</div>
+        <div key={index}>{name} this from slug {slug}</div>
         </Link>
       ))}
     </main>
@@ -59,7 +59,6 @@ export default Post
       params: { slug: post.slug },
     }))
 
-   console.log(paths,'paths')
     return { paths, fallback: false }
   };
   
