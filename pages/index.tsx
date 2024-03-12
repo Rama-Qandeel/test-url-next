@@ -25,7 +25,7 @@ export default function Home({grades}:any) {
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
     >
       {grades?.map((item:any,index: any) => (
-        <Link href={item.slug} key={index}>
+        <Link href={`/test/test/${item.slug}`} key={index}>
         <div key={index}>{item.name}</div>
         </Link>
       ))}

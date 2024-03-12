@@ -50,7 +50,7 @@ const Semester = ({ semesters }: any) => {
     <>
       <div className="tw-mt-8 tw-grid tw-grid-cols-1 tw-gap-6 sm:tw-grid-cols-2">
         {semesters?.map(({ id, name, slug }: any) => (
-          <Link href={`${router.query.slug}/${slug}`} key={id}>
+          <Link href={`/test/test/${router.query.slug}/${slug}`} key={id}>
             <div className="tw-flex tw-h-20 tw-w-full tw-items-center tw-rounded-xl tw-p-6 tw-text-xs tw-leading-normal tw-text-[#535962] tw-shadow-[0_0_6px_#00000029] hover:tw-bg-[#327bf9] hover:tw-text-white">
               <div className="tw-flex tw-w-full tw-items-center tw-justify-between tw-leading-normal">
                 <h2 className={`tw-my-0 tw-font-[semiBold-ar] tw-text-4xl`}>
