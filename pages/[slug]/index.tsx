@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 };
 
-const Semesters = ({ semesters }: any) => {
+const Semester = ({ semesters }: any) => {
   const router = useRouter();
 
   return (
@@ -66,4 +66,4 @@ const Semesters = ({ semesters }: any) => {
   );
 };
 
-export default Semesters;
+export default Semester;
