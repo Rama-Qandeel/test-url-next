@@ -11,15 +11,13 @@ export const getServerSideProps = async (
 ) => {
   try {
     const { locale, query } = context;
-    const session = await getSession(context);
-    console.log(session);
+
     const filesresponse = await axios.get(
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
-        params: { needle: "�مكثف-فصل-اول-2024-الدكتور-محمد-الكوفحي.-520885" },
+        params: { needle: query?.slug},
         headers: {
           lang: locale ?? "en",
-          Authorization: `Bearer ${session?.token?.accessToken}`,
         },
       }
     );
