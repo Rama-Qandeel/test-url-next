@@ -10,7 +10,7 @@ export async function getStaticPaths(context: GetStaticPathsContext) {
 
     const res = await fetch("https://content-v2.joacademy.com/api/v1/grades");
     const grades = await res.json();
-console.log(grades.data)
+// console.log(grades.data)
     grades.data.forEach((grade: any) => {
       paths.push({
         params: { slug: grade.slug },

@@ -1,6 +1,10 @@
 import { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
+import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
+
 import Link from "next/link";
+import Files from "./files";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +24,8 @@ const posts = [
 ]
 
 export default function Home({grades}:any) {
+  const { t } = useTranslation("home-page");
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
