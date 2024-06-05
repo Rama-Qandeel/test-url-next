@@ -15,14 +15,17 @@ export const getServerSideProps = async (
     const filesresponse = await axios.get(
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
-        params: { needle: query?.slug},
+        params: { needle: query?.slug },
         headers: {
           lang: locale ?? "en",
         },
       }
     );
- 
-    console.log(filesresponse.data.data[0],'++++++++++++++++++++++++++++++++++++++++++++');
+
+    console.log(
+      filesresponse.data.data[0],
+      "++++++++++++++++++++++++++++++++++++++++++++"
+    );
     return {
       props: {
         payload: filesresponse.data.data[0] ?? null,
@@ -35,12 +38,11 @@ export const getServerSideProps = async (
 
 type TFile = InferGetServerSidePropsType<typeof getServerSideProps>;
 
-const File = ({payload}:any) => {
+const File = ({ payload }: any) => {
   const router = useRouter();
 
-  // let description = files?.name;
-  // if (files?.subject?.name) description += ` - ${files?.subject?.name}`;
-  // if (files?.teacher?.name) description += ` - ${files?.teacher?.name}`;
+  console.log(payload, "payload");
+  console.log(router, "router");
 
   return (
     <>
@@ -54,34 +56,20 @@ const File = ({payload}:any) => {
           <div className="tw-flex tw-w-full tw-flex-col tw-justify-between tw-gap-20 sm:tw-gap-4 md:tw-flex-row">
             <div>
               <div className="tw-flex tw-flex-col tw-items-center tw-gap-4 md:tw-flex-row">
-                <div
-                  style={{ color: payload?.file_color }}
-                >
-                  <i
-                    className={`ri-${payload?.file_icon}`}
-                  />
+                <div style={{ color: payload?.file_color }}>
+                  <i className={`ri-${payload?.file_icon}`} />
                 </div>
-                <h2
-                  className={`tw-my-0 tw-font-normal`}
-                >
-                  {payload?.name}
-                </h2>
+                <h2 className={`tw-my-0 tw-font-normal`}>{payload?.name}</h2>
               </div>
-              <div
-                dangerouslySetInnerHTML={{ __html: payload?.description }}
-              />
+              <div dangerouslySetInnerHTML={{ __html: payload?.description }} />
               <div className={"tw-flex"}>
                 {payload?.subject?.name && (
-                  <div
-                    key={payload?.subject?.id}
-                  >
+                  <div key={payload?.subject?.id}>
                     <span> {payload?.subject?.name} </span>
                   </div>
                 )}
                 {payload?.teacher?.name ? (
-                  <div
-                    key={payload?.teacher?.id}
-                  >
+                  <div key={payload?.teacher?.id}>
                     <span> {payload?.teacher?.name} </span>
                   </div>
                 ) : null}
@@ -115,7 +103,6 @@ const File = ({payload}:any) => {
           <div className="tw-font-bold">there-is-no-file-data</div>
         )}
       </div>
-      
     </>
   );
 };
