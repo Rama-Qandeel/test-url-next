@@ -26,8 +26,8 @@ const Files = () => {
   }, []);
   return (
     <div>
-      {data.map((file: any) => (
-        <Link href={`/files/${file?.slug}`}>
+      {data.map((file: any, index: any) => (
+        <Link href={`/files/${file?.slug}`} key={index}>
           <div style={{ margin: "5px" }}>{file?.name}</div>
         </Link>
       ))}
