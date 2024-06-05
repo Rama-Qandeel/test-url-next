@@ -15,7 +15,8 @@ export const getServerSideProps = async (
     const filesresponse = await axios.get(
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
-        params: { needle: query?.slug },
+        // @ts-ignore
+        params: { needle: decodeURI(query?.slug) },
         headers: {
           lang: locale ?? "en",
         },
