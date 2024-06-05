@@ -16,7 +16,7 @@ export const getServerSideProps = async (
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
         // @ts-ignore
-        params: { needle: decodeURI(query?.slug) },
+        params: { needle: encodeURIComponent(query?.slug).replace(/\+/g, '%2B') },
         headers: {
           lang: locale ?? "en",
         },
@@ -45,7 +45,7 @@ const File = ({ payload }: any) => {
   console.log(payload, "payload");
   console.log(router, "router");
           // @ts-ignore
-console.log(decodeURI(router?.query?.slug))
+console.log(encodeURIComponent(router?.query?.slug).replace(/\+/g, '%2B'))
 
   return (
     <>
