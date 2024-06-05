@@ -6,6 +6,14 @@ import FileDetails from "@/components/file-details";
 import axios from "axios";
 import { useEffect } from "react";
 
+const getNeedle = (slug: string | string[] | undefined): string => {
+    if (typeof slug === 'string') {
+      return encodeURIComponent(slug);
+    } else if (Array.isArray(slug)) {
+      return encodeURIComponent(slug.join(''));
+    }
+    return '';
+  };
 export const getServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
@@ -15,7 +23,7 @@ export const getServerSideProps = async (
     const filesresponse = await axios.get(
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
-        params: { needle: encodeURIComponent(query?.slug) },
+        params: { needle: getNeedle(query?.slug) },
         headers: {
           lang: locale ?? "en",
         },
