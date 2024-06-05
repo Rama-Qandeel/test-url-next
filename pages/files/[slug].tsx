@@ -44,6 +44,8 @@ const File = ({ payload }: any) => {
 
   console.log(payload, "payload");
   console.log(router, "router");
+          // @ts-ignore
+console.log(decodeURI(router?.query?.slug))
 
   return (
     <>
