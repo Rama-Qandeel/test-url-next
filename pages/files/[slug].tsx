@@ -8,9 +8,7 @@ import { useEffect } from "react";
 
 const getNeedle = (slug: string | string[] | undefined): string => {
     if (typeof slug === 'string') {
-      return encodeURIComponent(slug);
-    } else if (Array.isArray(slug)) {
-      return encodeURIComponent(slug.join(''));
+      return encodeURI(slug);
     }
     return '';
   };
