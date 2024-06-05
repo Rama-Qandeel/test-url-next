@@ -11,13 +11,12 @@ export const getServerSideProps = async (
 ) => {
   try {
     const { locale, query } = context;
-    // @ts-ignore
-    const slug = new URL(query?.slug).href;
 
     const filesresponse = await axios.get(
       "https://admin.joacademy.net/api/v1/get-files-by-needle",
       {
-        params: { needle: slug },
+        // @ts-ignore
+        params: { needle: decodeURI(query?.slug).replace(/ /g, '+') },
         headers: {
           lang: locale ?? "en",
         },
@@ -45,8 +44,8 @@ const File = ({ payload }: any) => {
 
   console.log(payload, "payload");
   console.log(router, "router");
-  // @ts-ignore
-  console.log(new URL(router?.query?.slug).href);
+          // @ts-ignore
+console.log(decodeURI(router?.query?.slug).replace(/ /g, '+'))
 
   return (
     <>
