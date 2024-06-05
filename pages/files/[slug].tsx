@@ -99,7 +99,7 @@ const File = ({payload}:any) => {
                     <i className={`ri-download-2-line tw-text-[20px]`} />
                   </div>
                 ) : (
-                  <span className="bold">{t("view")}</span>
+                  <span className="bold">view</span>
                 )}
               </a>
               ;
